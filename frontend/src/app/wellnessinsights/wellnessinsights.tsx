@@ -326,13 +326,9 @@ export default function Wellnessinsights() {
     <SidebarProvider>
       <AppSidebar />
       <SidebarInset>
-        <header className="sticky top-0 z-10 flex h-16 items-center gap-2 bg-black/95 backdrop-blur supports-[backdrop-filter]:bg-black/60 px-4 border-b border-gray-800">
-          <div className="flex items-center gap-2">
+        <header className="sticky top-0 z-10 flex h-16 items-center gap-2 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 px-4 border-b">
             <SidebarTrigger className="-ml-1 text-white" />
-            <Separator
-              orientation="vertical"
-              className="mr-2 h-4 bg-gray-700"
-            />
+            <Separator orientation="vertical" className="h-6" />
             <Breadcrumb>
               <BreadcrumbList>
                 <BreadcrumbItem className="hidden md:block">
@@ -351,7 +347,6 @@ export default function Wellnessinsights() {
                 </BreadcrumbItem>
               </BreadcrumbList>
             </Breadcrumb>
-          </div>
         </header>
 
         <main className="w-[100%] flex-1 p-6 mx-auto bg-black text-white">
@@ -497,7 +492,6 @@ export default function Wellnessinsights() {
                       onClick={predictFromVitals}
                       disabled={loading || vitalsLoading}
                       variant={hasVitalsData ? "default" : "outline"}
-                      className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white"
                     >
                       {vitalsLoading
                         ? "Processing vitals..."
@@ -607,7 +601,6 @@ export default function Wellnessinsights() {
                     <Button
                       type="submit"
                       disabled={loading || !symptoms.trim()}
-                      className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white"
                     >
                       {loading ? "Analyzing..." : "Get Assessment"}
                     </Button>
@@ -654,17 +647,12 @@ export default function Wellnessinsights() {
                               Health Assessment
                             </CardTitle>
                             {diseaseInfo.predictedFrom === "vitals" && (
-                              <Badge
-                                variant="secondary"
-                                className="ml-2"
-                              >
+                              <Badge variant="secondary" className="ml-2">
                                 From Vitals
                               </Badge>
                             )}
                           </div>
-                          <Badge
-                            variant="outline"
-                          >
+                          <Badge variant="outline">
                             Confidence:{" "}
                             {Math.round((diseaseInfo.confidence || 0) * 100)}%
                           </Badge>
@@ -880,7 +868,7 @@ export default function Wellnessinsights() {
             </TabsContent>
 
             <TabsContent value="history">
-              <Card className="bg-gray-900 border-gray-700">
+              <Card>
                 <CardHeader>
                   <CardTitle className="text-white">
                     Assessment History
@@ -895,7 +883,7 @@ export default function Wellnessinsights() {
                       {history.map((item, index) => (
                         <Card
                           key={index}
-                          className="hover:bg-gray-800/50 transition-colors cursor-pointer bg-gray-800 border-gray-700"
+                          className="transition-colors cursor-pointer "
                           onClick={() => {
                             setDiseaseInfo(item);
                             setActiveTab("prediction");
@@ -909,30 +897,22 @@ export default function Wellnessinsights() {
                                     item.severity
                                   )}`}
                                 />
-                                <CardTitle className="text-sm font-medium text-white">
+                                <CardTitle className="text-sm font-medium">
                                   {item.timestamp
                                     ? new Date(item.timestamp).toLocaleString()
                                     : "Unknown date"}
                                 </CardTitle>
                                 {item.predictedFrom === "vitals" && (
-                                  <Badge
-                                    variant="secondary"
-                                    className="text-xs bg-blue-900 text-blue-200"
-                                  >
-                                    Vitals
-                                  </Badge>
+                                  <Badge variant="secondary">Vitals</Badge>
                                 )}
                               </div>
-                              <Badge
-                                variant="outline"
-                                className="text-white border-gray-600"
-                              >
+                              <Badge variant="outline">
                                 {Math.round((item.confidence || 0) * 100)}%
                               </Badge>
                             </div>
                           </CardHeader>
                           <CardContent className="pt-0">
-                            <p className="text-sm text-gray-400 line-clamp-2">
+                            <p className="text-sm  line-clamp-2">
                               {item.overview || "No overview available"}
                             </p>
                           </CardContent>
@@ -942,7 +922,7 @@ export default function Wellnessinsights() {
                   ) : (
                     <div className="flex flex-col items-center justify-center py-12">
                       <InfoCircledIcon className="h-8 w-8 text-gray-600 mb-4" />
-                      <p className="text-sm text-gray-500">
+                      <p className="text-sm">
                         No assessment history yet. Complete your first
                         assessment to see it here.
                       </p>
@@ -953,19 +933,17 @@ export default function Wellnessinsights() {
             </TabsContent>
 
             <TabsContent value="resources">
-              <Card className="bg-gray-900 border-gray-700">
+              <Card>
                 <CardHeader>
-                  <CardTitle className="text-white">Health Resources</CardTitle>
-                  <CardDescription className="text-gray-400">
+                  <CardTitle>Health Resources</CardTitle>
+                  <CardDescription>
                     Trusted sources for medical information
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-8">
                     <div>
-                      <h3 className="font-medium mb-4 text-white">
-                        Medical References
-                      </h3>
+                      <h3 className="font-medium mb-4 ">Medical References</h3>
                       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                         {[
                           {
@@ -986,12 +964,10 @@ export default function Wellnessinsights() {
                             href={resource.url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="border rounded-lg p-4 hover:shadow-md transition-all bg-gray-800 border-gray-700 hover:border-gray-600"
+                            className="border rounded-lg p-4 hover:shadow-md transition-all  hover:border-gray-600"
                           >
-                            <div className="font-medium text-white">
-                              {resource.name}
-                            </div>
-                            <div className="text-sm text-gray-500 mt-1 truncate">
+                            <div className="font-medium ">{resource.name}</div>
+                            <div className="text-sm  mt-1 truncate">
                               {resource.url}
                             </div>
                           </a>
@@ -1000,10 +976,8 @@ export default function Wellnessinsights() {
                     </div>
 
                     <div>
-                      <h3 className="font-medium mb-4 text-white">
-                        Emergency Signs
-                      </h3>
-                      <ul className="list-disc pl-5 space-y-2 text-gray-400">
+                      <h3 className="font-medium mb-4 ">Emergency Signs</h3>
+                      <ul className="list-disc pl-5 space-y-2 ">
                         <li>
                           Chest pain or pressure lasting more than a few minutes
                         </li>

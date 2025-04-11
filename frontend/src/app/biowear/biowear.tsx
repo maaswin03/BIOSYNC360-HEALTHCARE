@@ -14,16 +14,20 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useUser } from "@clerk/clerk-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Star, Check, Shield, Truck, HeartPulse, Thermometer, Activity, Gauge } from "lucide-react";
+import {
+  Star,
+  Check,
+  Shield,
+  Truck,
+  HeartPulse,
+  Thermometer,
+  Activity,
+  Gauge,
+} from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 interface RazorpayOptions {
@@ -85,8 +89,8 @@ export default function Biowear() {
     handleSubmit(2599 * quantity);
   };
 
-  const incrementQuantity = () => setQuantity(prev => Math.min(prev + 1, 5));
-  const decrementQuantity = () => setQuantity(prev => Math.max(prev - 1, 1));
+  const incrementQuantity = () => setQuantity((prev) => Math.min(prev + 1, 5));
+  const decrementQuantity = () => setQuantity((prev) => Math.max(prev - 1, 1));
 
   const features = [
     {
@@ -95,8 +99,8 @@ export default function Biowear() {
       description: [
         "Monitors your pulse and heart rate in real time",
         "Ensures accurate results for everyday health tracking",
-        "Advanced photoplethysmography technology"
-      ]
+        "Advanced photoplethysmography technology",
+      ],
     },
     {
       icon: <Thermometer className="h-6 w-6 text-blue-600" />,
@@ -104,8 +108,8 @@ export default function Biowear() {
       description: [
         "Provides precise body temperature readings",
         "±0.5°C accuracy for reliable measurements",
-        "Waterproof design for versatile use"
-      ]
+        "Waterproof design for versatile use",
+      ],
     },
     {
       icon: <Activity className="h-6 w-6 text-blue-600" />,
@@ -113,8 +117,8 @@ export default function Biowear() {
       description: [
         "Captures detailed electrocardiogram (ECG) signals",
         "Helps monitor heart rhythm and detect potential irregularities",
-        "Medical-grade precision in a compact form"
-      ]
+        "Medical-grade precision in a compact form",
+      ],
     },
     {
       icon: <Gauge className="h-6 w-6 text-blue-600" />,
@@ -122,9 +126,9 @@ export default function Biowear() {
       description: [
         "Combines heart rate and blood pressure monitoring",
         "Tracks systolic and diastolic pressure",
-        "Validated against clinical standards"
-      ]
-    }
+        "Validated against clinical standards",
+      ],
+    },
   ];
 
   const specifications = [
@@ -135,7 +139,7 @@ export default function Biowear() {
     { name: "Water Resistance", value: "IP67 (splash and sweat proof)" },
     { name: "Compatibility", value: "iOS & Android" },
     { name: "Warranty", value: "1 year manufacturer warranty" },
-    { name: "Weight", value: "45g (single glove)" }
+    { name: "Weight", value: "45g (single glove)" },
   ];
 
   return (
@@ -143,23 +147,26 @@ export default function Biowear() {
       <AppSidebar />
       <SidebarInset>
         <header className="sticky top-0 z-10 flex h-16 items-center gap-2 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 px-4 border-b">
-          <div className="flex items-center gap-2">
-            <SidebarTrigger className="-ml-1" />
-            <Separator orientation="vertical" className="mr-2 h-4" />
-            <Breadcrumb>
-              <BreadcrumbList>
-                <BreadcrumbItem className="hidden md:block">
-                  <BreadcrumbLink href="/products" className="hover:text-primary transition-colors">
-                    Products
-                  </BreadcrumbLink>
-                </BreadcrumbItem>
-                <BreadcrumbSeparator className="hidden md:block" />
-                <BreadcrumbItem>
-                  <BreadcrumbPage className="font-semibold text-primary">BioWear</BreadcrumbPage>
-                </BreadcrumbItem>
-              </BreadcrumbList>
-            </Breadcrumb>
-          </div>
+          <SidebarTrigger className="-ml-1" />
+          <Separator orientation="vertical" className="mr-2 h-4" />
+          <Breadcrumb>
+            <BreadcrumbList>
+              <BreadcrumbItem className="hidden md:block">
+                <BreadcrumbLink
+                  href="/products"
+                  className="hover:text-primary transition-colors"
+                >
+                  Products
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator className="hidden md:block" />
+              <BreadcrumbItem>
+                <BreadcrumbPage className="font-semibold text-primary">
+                  BioWear
+                </BreadcrumbPage>
+              </BreadcrumbItem>
+            </BreadcrumbList>
+          </Breadcrumb>
         </header>
 
         <main className="flex-1 p-6 max-w-7xl mx-auto">
@@ -172,11 +179,11 @@ export default function Biowear() {
                   className="h-full object-contain transition-transform hover:scale-105"
                 />
               </div>
-              
+
               <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
                 {[1, 2, 3, 4].map((i) => (
-                  <button 
-                    key={i} 
+                  <button
+                    key={i}
                     className="flex-shrink-0 rounded-lg bg-muted/50 p-2 border hover:border-primary transition-colors"
                   >
                     <img
@@ -191,51 +198,69 @@ export default function Biowear() {
 
             <div className="space-y-6">
               <div>
-                <Badge variant="outline" className="mb-2 bg-blue-50 text-blue-600">
+                <Badge
+                  variant="outline"
+                  className="mb-2 bg-blue-50 text-blue-600"
+                >
                   New Generation
                 </Badge>
-                <h1 className="text-3xl font-bold tracking-tight">BioWear Smart Watch</h1>
+                <h1 className="text-3xl font-bold tracking-tight">
+                  BioWear Smart Watch
+                </h1>
                 <p className="text-muted-foreground mt-2 text-lg">
-                  Comprehensive health monitoring with cutting-edge sensor technology
+                  Comprehensive health monitoring with cutting-edge sensor
+                  technology
                 </p>
-                
+
                 <div className="mt-4 flex items-center gap-3">
                   <div className="flex">
                     {[1, 2, 3, 4, 5].map((i) => (
-                      <Star key={i} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
+                      <Star
+                        key={i}
+                        className="h-5 w-5 fill-yellow-400 text-yellow-400"
+                      />
                     ))}
                   </div>
-                  <span className="text-muted-foreground">4.8 (142 reviews)</span>
-                  <span className="text-blue-600 text-sm font-medium">Verified Purchase</span>
+                  <span className="text-muted-foreground">
+                    4.8 (142 reviews)
+                  </span>
+                  <span className="text-blue-600 text-sm font-medium">
+                    Verified Purchase
+                  </span>
                 </div>
               </div>
 
               <div className="space-y-3">
                 <div className="flex items-end gap-3">
                   <span className="text-3xl font-bold">₹2,599</span>
-                  <span className="text-lg text-muted-foreground line-through">₹3,499</span>
+                  <span className="text-lg text-muted-foreground line-through">
+                    ₹3,499
+                  </span>
                   <Badge variant="secondary" className="text-sm font-medium">
                     36% OFF
                   </Badge>
                 </div>
                 <p className="text-green-600 font-medium flex items-center gap-1">
-                  <Check className="h-4 w-4" /> In stock (ships in 1-2 business days)
+                  <Check className="h-4 w-4" /> In stock (ships in 1-2 business
+                  days)
                 </p>
               </div>
 
               <div className="space-y-5 pt-2">
                 <div className="flex items-center gap-4">
                   <div className="flex items-center gap-3 rounded-lg border px-4 py-2">
-                    <button 
-                      onClick={decrementQuantity} 
+                    <button
+                      onClick={decrementQuantity}
                       className="px-2 text-lg font-medium text-gray-500 hover:text-gray-900"
                       disabled={quantity <= 1}
                     >
                       -
                     </button>
-                    <span className="w-8 text-center font-medium">{quantity}</span>
-                    <button 
-                      onClick={incrementQuantity} 
+                    <span className="w-8 text-center font-medium">
+                      {quantity}
+                    </span>
+                    <button
+                      onClick={incrementQuantity}
                       className="px-2 text-lg font-medium text-gray-500 hover:text-gray-900"
                       disabled={quantity >= 5}
                     >
@@ -244,18 +269,23 @@ export default function Biowear() {
                   </div>
                   <div>
                     <p className="text-sm text-muted-foreground">Total</p>
-                    <p className="font-medium">₹{(2599 * quantity).toLocaleString()}</p>
+                    <p className="font-medium">
+                      ₹{(2599 * quantity).toLocaleString()}
+                    </p>
                   </div>
                 </div>
 
                 <div className="flex gap-3 pt-2">
-                  <Button 
-                    onClick={handleBuyNow} 
+                  <Button
+                    onClick={handleBuyNow}
                     className="flex-1 h-10 text-lg font-medium"
                   >
                     Buy Now
                   </Button>
-                  <Button variant="outline" className="flex-1 h-10 text-lg font-medium">
+                  <Button
+                    variant="outline"
+                    className="flex-1 h-10 text-lg font-medium"
+                  >
                     Add to Cart
                   </Button>
                 </div>
@@ -267,7 +297,9 @@ export default function Biowear() {
                     </div>
                     <div>
                       <p className="font-medium">Free Shipping</p>
-                      <p className="text-sm text-muted-foreground">On all orders</p>
+                      <p className="text-sm text-muted-foreground">
+                        On all orders
+                      </p>
                     </div>
                   </div>
                   <div className="flex items-center gap-3 rounded-lg border p-3 hover:border-blue-300 transition-colors">
@@ -276,7 +308,9 @@ export default function Biowear() {
                     </div>
                     <div>
                       <p className="font-medium">1 Year Warranty</p>
-                      <p className="text-sm text-muted-foreground">Easy returns</p>
+                      <p className="text-sm text-muted-foreground">
+                        Easy returns
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -285,32 +319,32 @@ export default function Biowear() {
           </div>
 
           {/* Product Details Tabs */}
-          <Tabs 
-            value={activeTab} 
-            onValueChange={setActiveTab} 
+          <Tabs
+            value={activeTab}
+            onValueChange={setActiveTab}
             className="mt-12"
           >
             <TabsList className="w-full justify-start border-b rounded-none bg-transparent p-0 h-14">
-              <TabsTrigger 
-                value="overview" 
+              <TabsTrigger
+                value="overview"
                 className="relative h-full rounded-none border-b-2 border-transparent data-[state=active]:border-blue-600 data-[state=active]:bg-transparent font-medium px-4"
               >
                 Overview
               </TabsTrigger>
-              <TabsTrigger 
-                value="features" 
+              <TabsTrigger
+                value="features"
                 className="relative h-full rounded-none border-b-2 border-transparent data-[state=active]:border-blue-600 data-[state=active]:bg-transparent font-medium px-4"
               >
                 Features
               </TabsTrigger>
-              <TabsTrigger 
-                value="specs" 
+              <TabsTrigger
+                value="specs"
                 className="relative h-full rounded-none border-b-2 border-transparent data-[state=active]:border-blue-600 data-[state=active]:bg-transparent font-medium px-4"
               >
                 Specifications
               </TabsTrigger>
-              <TabsTrigger 
-                value="reviews" 
+              <TabsTrigger
+                value="reviews"
                 className="relative h-full rounded-none border-b-2 border-transparent data-[state=active]:border-blue-600 data-[state=active]:bg-transparent font-medium px-4"
               >
                 Reviews
@@ -320,18 +354,23 @@ export default function Biowear() {
             <div className="mt-6">
               <TabsContent value="overview">
                 <div className="prose prose-sm max-w-none">
-                  <h3 className="text-xl font-semibold mb-4">Revolutionary Health Monitoring</h3>
+                  <h3 className="text-xl font-semibold mb-4">
+                    Revolutionary Health Monitoring
+                  </h3>
                   <p>
-                    The BioWear Smart Glove is a revolutionary health monitoring device that combines 
-                    medical-grade sensors with everyday comfort. Designed for athletes, health enthusiasts, 
-                    and patients alike, it provides continuous tracking of your vital signs with clinical accuracy.
+                    The BioWear Smart Glove is a revolutionary health monitoring
+                    device that combines medical-grade sensors with everyday
+                    comfort. Designed for athletes, health enthusiasts, and
+                    patients alike, it provides continuous tracking of your
+                    vital signs with clinical accuracy.
                   </p>
                   <p className="mt-4">
-                    With seamless Bluetooth connectivity to our BioSync360 app, you'll get real-time 
-                    insights and historical trends of your cardiovascular health, temperature patterns, 
-                    and more - all from the convenience of your wearable device.
+                    With seamless Bluetooth connectivity to our BioSync360 app,
+                    you'll get real-time insights and historical trends of your
+                    cardiovascular health, temperature patterns, and more - all
+                    from the convenience of your wearable device.
                   </p>
-                  
+
                   <div className="mt-8 grid gap-6 sm:grid-cols-2">
                     <div className="space-y-2">
                       <h4 className="font-medium">Key Benefits</h4>
@@ -346,7 +385,9 @@ export default function Biowear() {
                         </li>
                         <li className="flex items-start gap-2">
                           <Check className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
-                          <span>Early detection of potential health issues</span>
+                          <span>
+                            Early detection of potential health issues
+                          </span>
                         </li>
                       </ul>
                     </div>
@@ -374,13 +415,18 @@ export default function Biowear() {
               <TabsContent value="features">
                 <div className="grid gap-6 md:grid-cols-2">
                   {features.map((feature, index) => (
-                    <Card key={index} className="hover:shadow-md transition-shadow">
+                    <Card
+                      key={index}
+                      className="hover:shadow-md transition-shadow"
+                    >
                       <CardHeader className="flex flex-row items-start gap-4 pb-3">
                         <div className="p-2 rounded-lg bg-blue-50">
                           {feature.icon}
                         </div>
                         <div>
-                          <CardTitle className="text-lg">{feature.title}</CardTitle>
+                          <CardTitle className="text-lg">
+                            {feature.title}
+                          </CardTitle>
                         </div>
                       </CardHeader>
                       <CardContent>
@@ -402,9 +448,16 @@ export default function Biowear() {
                 <Card>
                   <CardContent className="p-6 grid gap-4 md:grid-cols-2">
                     {specifications.map((spec, index) => (
-                      <div key={index} className="flex justify-between py-3 border-b last:border-b-0">
-                        <span className="text-sm text-muted-foreground">{spec.name}</span>
-                        <span className="text-sm font-medium text-right">{spec.value}</span>
+                      <div
+                        key={index}
+                        className="flex justify-between py-3 border-b last:border-b-0"
+                      >
+                        <span className="text-sm text-muted-foreground">
+                          {spec.name}
+                        </span>
+                        <span className="text-sm font-medium text-right">
+                          {spec.value}
+                        </span>
                       </div>
                     ))}
                   </CardContent>
@@ -415,27 +468,40 @@ export default function Biowear() {
                 <div className="space-y-6">
                   <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                     <div>
-                      <h3 className="text-xl font-semibold">Customer Reviews</h3>
-                      <p className="text-muted-foreground">What our customers say about BioWear</p>
+                      <h3 className="text-xl font-semibold">
+                        Customer Reviews
+                      </h3>
+                      <p className="text-muted-foreground">
+                        What our customers say about BioWear
+                      </p>
                     </div>
                     <Button variant="outline">Write a Review</Button>
                   </div>
-                  
+
                   <div className="space-y-6">
                     {[1, 2, 3].map((review) => (
-                      <Card key={review} className="hover:shadow-sm transition-shadow">
+                      <Card
+                        key={review}
+                        className="hover:shadow-sm transition-shadow"
+                      >
                         <CardContent className="p-6">
                           <div className="flex items-center gap-2">
                             <div className="flex">
                               {[1, 2, 3, 4, 5].map((i) => (
-                                <Star key={i} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
+                                <Star
+                                  key={i}
+                                  className="h-5 w-5 fill-yellow-400 text-yellow-400"
+                                />
                               ))}
                             </div>
-                            <span className="font-medium">Excellent product</span>
+                            <span className="font-medium">
+                              Excellent product
+                            </span>
                           </div>
                           <p className="mt-3">
-                            "The BioWear glove has been a game-changer for my health monitoring. 
-                            The ECG readings are surprisingly accurate compared to my doctor's equipment."
+                            "The BioWear glove has been a game-changer for my
+                            health monitoring. The ECG readings are surprisingly
+                            accurate compared to my doctor's equipment."
                           </p>
                           <div className="mt-4 flex items-center gap-2 text-sm text-muted-foreground">
                             <span className="font-medium">Ramesh K.</span>

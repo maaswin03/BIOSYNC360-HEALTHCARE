@@ -102,7 +102,7 @@ const data = {
     },
     {
       title: "Alerts",
-      url: "/",
+      url: "/alerts",
       icon: AlertCircle,
     }
   ],

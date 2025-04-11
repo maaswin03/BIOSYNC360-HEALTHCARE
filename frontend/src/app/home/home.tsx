@@ -13,13 +13,14 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
+import { HeartPulse, Activity, Thermometer, Gauge, AlertCircle, Stethoscope, Baby } from "lucide-react";
 
 export default function Home() {
   return (
     <SidebarProvider>
       <AppSidebar />
       <SidebarInset>
-        <header className="sticky top-0 z-10 flex h-16 items-center gap-2 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 px-4 border-b">
+        <header className="flex h-16 shrink-0 items-center gap-2 border-b border-white/10">
           <div className="flex items-center gap-2 px-4">
             <SidebarTrigger className="-ml-1 text-white" />
             <Separator orientation="vertical" className="mr-2 h-4 bg-white/20" />

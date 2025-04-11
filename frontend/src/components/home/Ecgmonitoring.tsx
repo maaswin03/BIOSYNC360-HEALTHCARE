@@ -195,7 +195,7 @@ export function Ecgmonitoring() {
             <Area
               dataKey="ecg"
               type="natural"
-              fill="url(#fillECG)"
+              fill="hsl(200, 70%, 50%)"
               stroke="var(--color-ecg)"
               stackId="a"
             />
