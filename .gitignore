@@ -1,0 +1,19 @@
+.DS_Store
+.AppleDouble
+.LSOverride
+.Trashes
+._*
+
+# IDEs
+.vscode/
+.idea/
+
+# OS Trash
+*.swp
+*.swo
+*.bak
+
+# Lock files (optional: comment out if you want to commit them)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
