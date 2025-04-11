@@ -13,6 +13,7 @@ import Notfound from "./app/notfound/notfound";
 import { ReactNode } from "react";
 import Authentication from "./components/authentication/authentication";
 import Loading from "./components/Loading/Loading";
+import Dashboard from "./app/dashboard/dashboard";
 
 
 export default function App() {
@@ -36,6 +37,7 @@ export default function App() {
           <Route path="/medibot" element={<PrivateRoute><Medibot/></PrivateRoute>}/>
           <Route path="/mothercare360" element={<PrivateRoute><Mothercare360/></PrivateRoute>}/>
           <Route path="/wellnessinsights" element={<PrivateRoute><Wellnessinsights/></PrivateRoute>}/>
+          <Route path="/dashboard" element={<PrivateRoute><Dashboard/></PrivateRoute>}/>
 
 
           <Route path="*" element={<Notfound/>}/>
