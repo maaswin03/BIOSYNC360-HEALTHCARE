@@ -209,9 +209,9 @@ export default function HomePage() {
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {features.map((feature, index) => (
-              <Card key={index} className="bg-gray-900 border-gray-800 hover:border-gray-700 transition-colors">
+              <Card key={index} className=" transition-colors">
                 <CardHeader>
-                  <div className="flex items-center justify-center h-10 w-10 rounded-lg bg-gray-800 mb-4">
+                  <div className="flex items-center justify-center h-10 w-10 rounded-lg  mb-4">
                     {feature.icon}
                   </div>
                   <CardTitle>{feature.title}</CardTitle>
@@ -232,7 +232,7 @@ export default function HomePage() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-16 bg-gray-900">
+      <section className="py-16 ">
         <div className="container mx-auto max-w-6xl px-4">
           <div className="text-center mb-12">
             <Badge variant="outline" className="bg-gray-800 text-white border-gray-700">
@@ -248,7 +248,7 @@ export default function HomePage() {
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {testimonials.map((testimonial, index) => (
-              <Card key={index} className="bg-gray-900 border-gray-800">
+              <Card key={index}>
                 <CardHeader>
                   <div className="flex items-center gap-3">
                     <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-800">
@@ -281,7 +281,7 @@ export default function HomePage() {
 
       {/* CTA */}
       <section className="py-16">
-        <div className="container mx-auto max-w-4xl bg-gray-900 rounded-xl p-8 text-center border border-gray-800">
+        <div className="container mx-auto max-w-4xl  rounded-xl p-8 text-center border border-gray-800">
           <h2 className="text-3xl font-bold md:text-4xl">
             Ready to Transform Your Healthcare?
           </h2>
@@ -329,7 +329,7 @@ export default function HomePage() {
             ))}
           </div>
           
-          <div className="mt-12 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4">
+          <div className="mt-12 pt-8 border-t  flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm text-gray-500">
               © 2023 BioSync360. All rights reserved.
             </p>
