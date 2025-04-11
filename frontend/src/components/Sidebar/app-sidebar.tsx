@@ -37,6 +37,7 @@ const data = {
     {
       title: "Health Services",
       url: "/HealthTracking",
+      isActive: true,
       icon: HeartPulse,
       items: [
         {
@@ -80,18 +81,13 @@ const data = {
       items: [
         {
           title: "Bio Wear",
-          url: "/biowear",
+          url: "/products",
         },
         {
           title: "Sync App",
-          url: "/SyncApp",
+          url: "/syncapp",
         },
       ],
-    },
-    {
-      title: "Alerts",
-      url: "/",
-      icon: AlertCircle,
     },
     {
       title: "Resources",
@@ -100,10 +96,15 @@ const data = {
       items: [
         {
           title: "FAQs",
-          url: "/FAQs",
+          url: "/faqs",
         },
       ],
     },
+    {
+      title: "Alerts",
+      url: "/",
+      icon: AlertCircle,
+    }
   ],
 };
 

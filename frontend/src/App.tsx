@@ -14,6 +14,9 @@ import { ReactNode } from "react";
 import Authentication from "./components/authentication/authentication";
 import Loading from "./components/Loading/Loading";
 import Dashboard from "./app/dashboard/dashboard";
+import Biowear from "./app/biowear/biowear";
+import Syncapp from "./app/syncapp/syncapp";
+import Faqs from "./app/faqs/faqs";
 
 
 export default function App() {
@@ -38,6 +41,9 @@ export default function App() {
           <Route path="/mothercare360" element={<PrivateRoute><Mothercare360/></PrivateRoute>}/>
           <Route path="/wellnessinsights" element={<PrivateRoute><Wellnessinsights/></PrivateRoute>}/>
           <Route path="/dashboard" element={<PrivateRoute><Dashboard/></PrivateRoute>}/>
+          <Route path="/products" element={<PrivateRoute><Biowear/></PrivateRoute>}/>
+          <Route path="/syncapp" element={<PrivateRoute><Syncapp/></PrivateRoute>}/>
+          <Route path="/faqs" element={<PrivateRoute><Faqs/></PrivateRoute>}/>
 
 
           <Route path="*" element={<Notfound/>}/>
