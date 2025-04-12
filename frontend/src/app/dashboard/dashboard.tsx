@@ -6,9 +6,9 @@ import { Temperature } from "@/components/home/Temperature";
 import {
   Card,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
+  CardFooter,
 } from "@/components/ui/card";
 import {
   Breadcrumb,
@@ -31,6 +31,9 @@ import markerIconPng from "leaflet/dist/images/marker-icon.png";
 import markerShadowPng from "leaflet/dist/images/marker-shadow.png";
 import BloodPressure from "@/components/home/BloodPressure";
 import SpO2 from "@/components/home/spo2";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 interface SensorData {
   [key: string]: any;
@@ -47,14 +50,24 @@ const markerIcon = new L.Icon({
 
 export default function Dashboard() {
   const [user, setUserData] = React.useState<SensorData>({});
-  const [bloodPressureData, setBloodPressureData] = React.useState<SensorData>(
-    {}
-  );
+  const [bloodPressureData, setBloodPressureData] = React.useState<SensorData>({});
   const [temperatureData, setTemperatureData] = React.useState<SensorData>({});
   const [hrData, setHrData] = React.useState<SensorData>({});
   const [prData, setPrData] = React.useState<SensorData>({});
   const [rpData, setRpData] = React.useState<SensorData>({});
   const [spo2Data, setSpo2Data] = React.useState<SensorData>({});
+  
+  // State for manual inputs
+  const [manualInputs, setManualInputs] = React.useState({
+    temperature: "",
+    heartRate: "",
+    pulseRate: "",
+    systolic: "",
+    diastolic: "",
+    spo2: "",
+    respiratoryRate: ""
+  });
+  const [isEditing, setIsEditing] = React.useState(false);
 
   const username = "maaswin";
 
@@ -76,6 +89,57 @@ export default function Dashboard() {
       setter(result[0]);
     } catch (error) {
       console.error(`Error fetching ${endpoint}:`, error);
+    }
+  };
+
+  const handleManualInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setManualInputs(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmitManualInputs = async () => {
+    try {
+      // Here you would typically send this data to your backend
+      // For now, we'll just update the local state
+      if (manualInputs.temperature) {
+        setTemperatureData(prev => ({ ...prev, currTemperature: manualInputs.temperature }));
+      }
+      if (manualInputs.heartRate) {
+        setHrData(prev => ({ ...prev, currHeartRate: manualInputs.heartRate }));
+      }
+      if (manualInputs.pulseRate) {
+        setPrData(prev => ({ ...prev, currPulseRate: manualInputs.pulseRate }));
+      }
+      if (manualInputs.systolic || manualInputs.diastolic) {
+        setBloodPressureData(prev => ({
+          ...prev,
+          currSystolic: manualInputs.systolic || prev.currSystolic,
+          currDiastolic: manualInputs.diastolic || prev.currDiastolic
+        }));
+      }
+      if (manualInputs.spo2) {
+        setSpo2Data(prev => ({ ...prev, currSpO2: manualInputs.spo2 }));
+      }
+      if (manualInputs.respiratoryRate) {
+        setRpData(prev => ({ ...prev, currRespiratoryRate: manualInputs.respiratoryRate }));
+      }
+      
+      setIsEditing(false);
+      // Clear the inputs
+      setManualInputs({
+        temperature: "",
+        heartRate: "",
+        pulseRate: "",
+        systolic: "",
+        diastolic: "",
+        spo2: "",
+        respiratoryRate: ""
+      });
+    } catch (error) {
+      console.error("Error submitting manual inputs:", error);
     }
   };
 
@@ -165,12 +229,110 @@ export default function Dashboard() {
         </header>
 
         <main className="flex-1 space-y-6 p-6 pt-4">
+          {/* Manual Input Section */}
+          <section className="space-y-3">
+            <div className="flex justify-between items-center">
+              <h2 className="text-xl font-semibold">Manual Health Data Input</h2>
+              {!isEditing ? (
+                <Button onClick={() => setIsEditing(true)}>Add Manual Data</Button>
+              ) : (
+                <div className="space-x-2">
+                  <Button variant="outline" onClick={() => setIsEditing(false)}>
+                    Cancel
+                  </Button>
+                  <Button onClick={handleSubmitManualInputs}>Submit</Button>
+                </div>
+              )}
+            </div>
+            
+            {isEditing && (
+              <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                <div className="space-y-2">
+                  <Label htmlFor="temperature">Temperature (°F)</Label>
+                  <Input
+                    id="temperature"
+                    name="temperature"
+                    value={manualInputs.temperature}
+                    onChange={handleManualInputChange}
+                    placeholder="e.g., 98.6"
+                  />
+                </div>
+                
+                <div className="space-y-2">
+                  <Label htmlFor="heartRate">Heart Rate (BPM)</Label>
+                  <Input
+                    id="heartRate"
+                    name="heartRate"
+                    value={manualInputs.heartRate}
+                    onChange={handleManualInputChange}
+                    placeholder="e.g., 72"
+                  />
+                </div>
+                
+                <div className="space-y-2">
+                  <Label htmlFor="pulseRate">Pulse Rate (BPM)</Label>
+                  <Input
+                    id="pulseRate"
+                    name="pulseRate"
+                    value={manualInputs.pulseRate}
+                    onChange={handleManualInputChange}
+                    placeholder="e.g., 72"
+                  />
+                </div>
+                
+                <div className="space-y-2">
+                  <Label htmlFor="systolic">Blood Pressure (mmHg)</Label>
+                  <div className="flex gap-2">
+                    <Input
+                      id="systolic"
+                      name="systolic"
+                      value={manualInputs.systolic}
+                      onChange={handleManualInputChange}
+                      placeholder="Systolic"
+                    />
+                    <span className="self-center">/</span>
+                    <Input
+                      id="diastolic"
+                      name="diastolic"
+                      value={manualInputs.diastolic}
+                      onChange={handleManualInputChange}
+                      placeholder="Diastolic"
+                    />
+                  </div>
+                </div>
+                
+                <div className="space-y-2">
+                  <Label htmlFor="spo2">SpO2 (%)</Label>
+                  <Input
+                    id="spo2"
+                    name="spo2"
+                    value={manualInputs.spo2}
+                    onChange={handleManualInputChange}
+                    placeholder="e.g., 98"
+                  />
+                </div>
+                
+                <div className="space-y-2">
+                  <Label htmlFor="respiratoryRate">Respiratory Rate (rpm)</Label>
+                  <Input
+                    id="respiratoryRate"
+                    name="respiratoryRate"
+                    value={manualInputs.respiratoryRate}
+                    onChange={handleManualInputChange}
+                    placeholder="e.g., 16"
+                  />
+                </div>
+              </div>
+            )}
+          </section>
+
           {/* ECG Monitoring Section */}
           <section className="space-y-3">
             <h2 className="text-xl font-semibold">ECG Monitoring</h2>
             <Ecgmonitoring />
           </section>
 
+          {/* Rest of your existing code... */}
           {/* Vital Signs Grid */}
           <section className="space-y-3">
             <h2 className="text-xl font-semibold">Vital Signs</h2>
