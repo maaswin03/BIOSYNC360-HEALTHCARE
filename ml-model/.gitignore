@@ -1,0 +1,72 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Flask-related
+instance/
+.env
+*.env
+
+# Virtual environments
+venv/
+env/
+.venv/
+ENV/
+Pipfile.lock
+poetry.lock
+
+# Model files
+*.pkl
+*.joblib
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# System/macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Pytest cache
+.pytest_cache/
+
+# VS Code & IDE settings
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# bin/include folders (e.g., from virtualenv)
+bin/
+include/
+lib/
+lib64/
+Scripts/
+
+# MongoDB dumps (if any)
+dump/
+*.bson
+*.json
+
+# Node dependencies (if you use React frontend too)
+node_modules/
+
+# Database files
+*.db
+*.sqlite3
+
+# Coverage reports
+htmlcov/
+.coverage
+coverage.xml
+.cache
+
+# Dist
+dist/
+build/
+*.egg-info/
+
+# macOS Trash
+.Trashes

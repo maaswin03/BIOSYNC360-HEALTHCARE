@@ -867,7 +867,7 @@ app.post("/predict", async (req, res) => {
       return res.status(500).json({
         message: "Failed to process AI response",
         error: parseError.message,
-        receivedText: text, // For debugging
+        receivedText: text,
       });
     }
   } catch (error) {
@@ -888,9 +888,8 @@ app.post("/api/chat", async (req, res) => {
       return res.status(400).json({ error: "Message is required" });
     }
 
-    // Prepare system instruction
     const systemInstruction = {
-      role: "user", // Must be 'user' role for system instruction
+      role: "user",
       parts: [
         {
           text: `
@@ -904,13 +903,11 @@ app.post("/api/chat", async (req, res) => {
       ],
     };
 
-    // Ensure history starts with user message
     const validHistory =
       history.length > 0 && history[0].role === "user"
         ? history
         : [systemInstruction];
 
-    // Start chat with proper history structure
     const chat = model.startChat({
       history: validHistory,
       generationConfig: {
@@ -918,7 +915,6 @@ app.post("/api/chat", async (req, res) => {
       },
     });
 
-    // Send message to Gemini
     const result = await chat.sendMessage(message);
     const response = await result.response;
     const text = response.text();
