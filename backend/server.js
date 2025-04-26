@@ -756,6 +756,7 @@ app.post("/predict-from-vitals", async (req, res) => {
         {
           "overview": "concise health status summary",
           "symptoms": ["array", "of", "potential", "symptoms"],
+          "confidence":["array","of", "confidence", "levels of symptoms"],
           "causes": ["array", "of", "possible", "causes"],
           "treatments": ["array", "of", "recommended", "actions"],
           "precautions": ["array", "of", "preventative", "measures"],
